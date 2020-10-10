@@ -29,7 +29,7 @@ unzip $2 -d $tmpdir &> /dev/null
 echo "Extracting Required Partitions . . . . "
 if [ $1 = "OxygenOS" ]; then
 		for partition in ${PARTITIONS[@]}; do
- 	   	    python $payload_extractor --partitions $partition --output_dir $tmpdir $tmpdir/payload.bin 
+ 	   	    sudo python2 $payload_extractor --partitions $partition --output_dir $tmpdir $tmpdir/payload.bin 
 		done
 	mv $tmpdir/system $outdir/system-old.img
 	mv $tmpdir/product $outdir/product.img
