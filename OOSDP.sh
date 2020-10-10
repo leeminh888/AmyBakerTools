@@ -3,7 +3,7 @@
 #Variables
 
 PARTITIONS=("system" "product" "opproduct" "vendor")
-payload_extractor="tools/extract_android_ota_payload-master/extract_android_ota_payload.py"
+payload_extractor="tools/extractor/extract.py"
 LOCALDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 outdir="$LOCALDIR/cache"
 tmpdir="$outdir/tmp"
@@ -29,7 +29,7 @@ unzip $2 -d $tmpdir &> /dev/null
 echo "Extracting Required Partitions . . . . "
 if [ $1 = "OxygenOS" ]; then
 		for partition in ${PARTITIONS[@]}; do
- 	   	    sudo python $payload_extractor --partitions $partition $tmpdir $tmpdir/payload.bin 
+ 	   	    python $payload_extractor --partitions $partition --output_dir $tmpdir $tmpdir/payload.bin 
 		done
 	mv $tmpdir/system $outdir/system-old.img
 	mv $tmpdir/product $outdir/product.img
