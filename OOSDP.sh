@@ -3,7 +3,7 @@
 #Variables
 
 PARTITIONS=("system" "product" "opproduct" "vendor")
-payload_extractor="tools/extractor/extract.py"
+payload_extractor="tools/payload_extractor/extract.py"
 LOCALDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 outdir="$LOCALDIR/cache"
 tmpdir="$outdir/tmp"
