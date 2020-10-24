@@ -140,11 +140,11 @@ if [ $MOUNTED == false ]; then
 fi
 
 if [ $AB == true ]; then
-   "$PROJECT_DIR"/"$SCRIPT_NAME" "${URL}" "${SRCTYPE}" AB "$PROJECT_DIR/output" ${@} || LEAVE
+    "$SCRIPT_NAME" "${URL}" "${SRCTYPE}" AB "$PROJECT_DIR/output" ${@} || LEAVE
 fi
 
 if [ $AONLY == true ]; then
-    "$PROJECT_DIR"/"$SCRIPT_NAME" "${URL}" "${SRCTYPE}" Aonly "$PROJECT_DIR/output" ${@} || LEAVE
+    "$SCRIPT_NAME" "${URL}" "${SRCTYPE}" Aonly "$PROJECT_DIR/output" ${@} || LEAVE
 fi
 
 UMOUNT "$PROJECT_DIR/working/system"
