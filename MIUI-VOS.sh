@@ -12,7 +12,7 @@ tmpdir="$outdir/tmp"
 
 usage() {
     echo "Usage: $0 <Firmware Type> [Path to Firmware]"
-    echo -e "\tFirmware Type! = MIUI"
+    echo -e "\tFirmware Type! = MIUI or VOS"
     echo -e "\tPath to Firmware!"
 }
 
@@ -22,7 +22,7 @@ if [ "$1" == "" ]; then
     exit 1
 fi
 
-echo "This must be used only for MIUI Android 11 devices with Dynamic Partition .
+echo "This must be used only for MIUI or VOS Android 11 devices with Dynamic Partition .
       Create Temp and out dir"
 	mkdir -p "$tmpdir"
 	mkdir -p "$outdir"
