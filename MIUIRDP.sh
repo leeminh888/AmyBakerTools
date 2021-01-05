@@ -85,7 +85,11 @@ echo "Merging system_ext.img "
 	    rmdir $outdir/system_ext/
 	    rm $outdir/system_ext.img
 
-echo "Finalising "
-	mkdir out
-	rm -rf system-old/
-echo "Please finish creating GSI using make.sh script"
+echo "Finalising . . . . "
+        mkdir working
+        cp -r system working/ &> /dev/null
+        umount system
+        rm -rf $outdir/system.img
+        rm -rf cache
+	rm -rf system
+echo "Done"
