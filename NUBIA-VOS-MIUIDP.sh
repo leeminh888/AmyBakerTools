@@ -69,7 +69,11 @@ echo "Merging product.img "
 	rmdir $outdir/product/
 	rm $outdir/product.img
 
-echo "Finalising "
-	mkdir out
-	rm -rf system-old/
-echo "Please finish creating GSI using make.sh script"
+echo "Finalising . . . . "
+        mkdir working
+        cp -r system working/ &> /dev/null
+        umount system
+        rm -rf $outdir/system.img
+        rm -rf cache
+	rm -rf system
+echo "Done"
