@@ -11,7 +11,7 @@ tmpdir="$outdir/tmp"
 
 usage() {
     echo "Usage: $0 <Firmware Type> [Path to Firmware]"
-    echo -e "\tFirmware Type! = OxygenOS or Pixel"
+    echo -e "\tFirmware Type! = OxygenOS or JoyUI"
     echo -e "\tPath to Firmware!"
 }
 
@@ -35,7 +35,7 @@ if [ $1 = "OxygenOS" ]; then
 	mv $tmpdir/product $outdir/product.img
 	mv $tmpdir/opproduct $outdir/opproduct.img
 	mv $tmpdir/vendor $outdir/vendor.img
-elif [ $(echo -n $1 | head -c 5) = "Pixel" ]; then
+elif [ $(echo -n $1 | head -c 5) = "JoyUI" ]; then
 	unzip $tmpdir/*/*.zip -d $tmpdir &> /dev/null
 	simg2img $tmpdir/system.img $outdir/system-old.img
 	simg2img $tmpdir/product.img $outdir/product.img
@@ -111,9 +111,12 @@ echo "Merging system_other.img "
 	    umount $outdir/system_ext
 	    rmdir $outdir/system_ext/
 	    rm $outdir/system_ext.img
-    fi
-fi
-echo "Finalising "
-	mkdir out
-	rm -rf system-old/
-echo "Please finish creating GSI using make.sh script"
+	    
+echo "Finalising . . . . "
+        mkdir working
+        cp -r system working/ &> /dev/null
+        umount system
+        rm -rf $outdir/system.img
+        rm -rf cache
+	rm -rf system
+echo "Done"
